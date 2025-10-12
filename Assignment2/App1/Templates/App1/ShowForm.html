@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2">
+        <tr>
+            <td>Sr.No</td>
+            <td>Role_Name</td>
+            <td>Role_Description</td>
+            <td>Action</td>
+        </tr>
+
+        {% for i in range %}
+
+        <tr>
+            <td>{{i.SrNo}}</td>
+            <td>{{i.Role_Name}}</td>
+            <td>{{i.Role_Description}}</td>
+            <td>
+                <a href="{% url 'editform' i.SrNo %}">Edit</a>
+                <a href="{% url 'deleteform' i.SrNo%}">Delete</a>
+            </td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</body>
+</html>
