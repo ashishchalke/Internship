@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'empupdate' range.SrNo%}" method="post">
+
+        {% csrf_token %}
+        <p>
+            <label for="id_First_Name">First Name:</label>
+        </p>
+
+        <p>
+            <input type="text" name="First_Name" maxlength="100" required="" id="id_First_Name" value="{{range.First_Name}}">
+        </p>
+
+        <p>
+            <label for="id_Last_Name">Last Name:</label>
+        </p>
+
+        <p>
+            <input type="text" name="Last_Name" maxlength="200" required="" id="id_Last_Name" value="{{range.Last_Name}}">
+        </p>
+
+        <p>
+            <label for="id_Email">Email:</label>
+        </p>
+
+        <p>
+            <input type="email" name="Email" maxlength="255" required="" id="id_Email" value="{{range.Email}}">
+        </p>
+
+        <p>
+            <label for="id_Mobile_Number">Mobile Number:</label>
+        </p>
+
+        <p>
+            <input type="text" name="Mobile_Number" maxlength="10" required="" id="id_Mobile_Number" value="{{range.Mobile_Number}}">
+        </p>
+
+        <p>
+            <label for="id_Role">Role:</label>
+        </p>
+
+        <p>
+            <select name="Role" required="" id="id_Role">
+            <option value="" selected="">---------</option>
+
+            <option value="Admin">Admin</option>
+
+            <option value="Manager">Manager</option>
+
+            <option value="Team Leader">Team Leader</option>
+
+            <option value="Employee">Employee</option>
+
+            </select>
+        </p>
+
+        <p>
+            <label for="id_Department">Department:</label>
+        </p>
+
+        <p>
+            <select name="Department" required="" id="id_Department">
+            <option value="" selected="">---------</option>
+
+            <option value="Operation">Operation</option>
+
+            <option value="Sales">Sales</option>
+
+            <option value="Accounts">Accounts</option>
+
+            <option value="IT">IT</option>
+
+            </select>
+        </p>
+
+        <p>
+            <label for="id_Username">Username:</label>
+        </p>
+
+        <p>
+            <input type="text" name="Username" maxlength="100" required="" id="id_Username" value="{{range.Username}}">
+        </p>
+
+        <p>
+            <label for="id_Password">Password:</label>
+        </p>
+
+        <p>
+            <input type="text" name="Password" maxlength="100" required="" id="id_Password" value="{{range.Password}}">
+        </p>
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

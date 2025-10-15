@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="2">
+        <tr>
+            <td>SrNo</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Email</td>
+            <td>Mobile Number</td>
+            <td>Role</td>
+            <td>Department</td>
+            <td>Date of Joining</td>
+            <td>Username</td>
+            <td>Password</td>
+            <td>Action</td>
+        </tr>
+
+        {% for i in range %}
+
+        <tr>
+            <td>{{i.SrNo}}</td>
+            <td>{{i.First_Name}}</td>
+            <td>{{i.Last_Name}}</td>
+            <td>{{i.Email}}</td>
+            <td>{{i.Mobile_Number}}</td>
+            <td>{{i.Role}}</td>
+            <td>{{i.Department}}</td>
+            <td>{{i.Date_of_Joining}}</td>
+            <td>{{i.Username}}</td>
+            <td>{{i.Password}}</td>
+            <td>
+                <a href="{% url 'empedit' i.SrNo%}">Edit</a>
+                <a href="{% url 'empdelete' i.SrNo%}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
