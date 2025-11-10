@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Review</title>
+
+    <style>
+        /* Background setup */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74ABE2, #5563DE);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Form box */
+        form {
+            background: #fff;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            width: 420px;
+        }
+
+        /* Headings */
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        /* Label + input spacing */
+        p {
+            margin: 10px 0;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Input + Select styling */
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+            transition: 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #5563DE;
+            outline: none;
+            box-shadow: 0 0 5px rgba(85,99,222,0.4);
+        }
+
+        /* Button design */
+        button {
+            width: 100%;
+            background-color: #5563DE;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4450c2;
+            transform: scale(1.03);
+        }
+
+        /* Fade animation */
+        form {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <form action="{% url 'updatereview' range.Review_Id %}" method="post">
+        {% csrf_token %}
+
+        <h2>Update Review</h2>
+
+        <p>
+            <label for="id_Review_Title">Review Title:</label>
+        </p>
+        <p>
+            <input type="text" name="Review_Title" maxlength="100" required id="id_Review_Title"
+            value="{{range.Review_Title}}">
+        </p>
+
+        <p>
+            <label for="id_Select_Employee">Select Employee:</label>
+        </p>
+        <p>
+            <select name="Select_Employee" required id="id_Select_Employee">
+                <option value="" selected>Select</option>
+                <option value="Admin">Admin</option>
+                <option value="Manager">Manager</option>
+                <option value="TL">TL</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="id_Employee_id">Employee id:</label>
+        </p>
+        <p>
+            <select name="Employee_id" required id="id_Employee_id">
+                <option value="" selected>Select</option>
+                <option value="1">Ashish</option>
+                <option value="2">Rohan</option>
+                <option value="3">Yash</option>
+                <option value="4">Raju</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="id_Reviewed_by">Reviewed by:</label>
+        </p>
+        <p>
+            <select name="Reviewed_by" required id="id_Reviewed_by">
+                <option value="" selected>Select</option>
+                <option value="1">Ashish</option>
+                <option value="2">Rohan</option>
+                <option value="3">Yash</option>
+                <option value="4">Raju</option>
+        
+            </select>
+        </p>
+
+        <p>
+            <label for="id_Review_Period">Review Period:</label>
+        </p>
+        <p>
+            <select name="Review_Period" required id="id_Review_Period">
+                <option value="" selected>Select</option>
+                <option value="Month">Month</option>
+                <option value="Quarterly">Quarterly</option>
+                <option value="Annually">Annually</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="id_Enter_Rating">Enter Rating:</label>
+        </p>
+        <p>
+            <input type="number" name="Enter_Rating" required id="id_Enter_Rating" value="{{range.Enter_Rating}}">
+        </p>
+
+        <p>
+            <label for="id_Comment">Comment:</label>
+        </p>
+        <p>
+            <input type="text" name="Comment" maxlength="300" id="id_Comment" value="{{range.Comment}}">
+        </p>
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
