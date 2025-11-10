@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+        }
+
+        button[type="submit"] {
+            background-color: #4a90e2;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #357abd;
+        }
+
+        @media (max-width: 768px) {
+            form {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form action="{% url 'formupdate' range.Task_id %}" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="id_Task_title">Task title:</label>
+            <input type="text" name="Task_title" maxlength="100" required id="id_Task_title" value="{{ range.Task_title }}">
+        </p>
+
+        <p>
+            <label for="id_Task_description">Task description:</label>
+            <input type="text" name="Task_description" maxlength="300" required id="id_Task_description" value="{{ range.Task_description }}">
+        </p>
+
+        <p>
+            <label for="id_Task_priority">Task priority:</label>
+            <select name="Task_priority" required="" id="id_Task_priority">
+            <option value="" selected="">Select priority</option>
+
+            <option value="High">High</option>
+
+            <option value="Medium">Medium</option>
+
+            <option value="Low">Low</option>
+
+</select>
+        </p>
+
+        <p>
+            <label for="id_Task_type">Task type:</label>
+            <select name="Task_type" required="" id="id_Task_type">
+            <option value="" selected="">Select type</option>
+
+            <option value="Pending">Pending</option>
+
+            <option value="In Progress">In Progress</option>
+
+            <option value="Completed">Completed</option>
+
+            </select>
+        </p>
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
