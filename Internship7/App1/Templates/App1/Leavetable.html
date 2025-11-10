@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Records</title>
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #f8bbd0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 95%;
+            max-width: 1000px;
+            background-color: #ffffff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px 15px;
+        }
+
+        th {
+            background-color: #1976d2;
+            color: white;
+            text-transform: capitalize;
+            letter-spacing: 0.5px;
+            font-size: 15px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f3f6f9;
+        }
+
+        tr:hover {
+            background-color: #e1f5fe;
+            transition: 0.3s ease;
+        }
+
+        td a {
+            text-decoration: none;
+            color: white;
+            background-color: #1976d2;
+            padding: 6px 10px;
+            border-radius: 5px;
+            margin-right: 6px;
+            font-size: 13px;
+            transition: background 0.3s ease;
+        }
+
+        td a:hover {
+            background-color: #0d47a1;
+        }
+
+        td {
+            color: #333;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                align-items: flex-start;
+                padding: 20px;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>leaveid</td>
+            <td>employeeid</td>
+            <td>leave_type</td>
+            <td>reason</td>
+            <td>start_date</td>
+            <td>end_date</td>
+            <td>total_days</td>
+            <td>status</td>
+            <td>Action</td>
+        </tr>
+
+        {% for i in range %}
+        <tr>
+            <td>{{i.leaveid}}</td>
+            <td>{{i.employeeid}}</td>
+            <td>{{i.leave_type}}</td>
+            <td>{{i.reason}}</td>
+            <td>{{i.start_date}}</td>
+            <td>{{i.end_date}}</td>
+            <td>{{i.total_days}}</td>
+            <td>{{i.status}}</td>
+            <td>
+                <a href="{% url 'leaveedit' i.leaveid %}">Edit</a>
+                <a href="{% url 'leavedelete' i.leaveid %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

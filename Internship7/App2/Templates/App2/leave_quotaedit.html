@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* Page setup */
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f2f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Form container */
+        form {
+            background: #ffffff;
+            padding: 30px 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 340px;
+        }
+
+        /* Label styling */
+        label {
+            font-weight: 600;
+            color: #333;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* Input and select styling */
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        /* Button styling */
+        button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        /* Optional: spacing between paragraphs */
+        p {
+            margin: 0 0 8px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="{% url 'leave_quotaupdate' range1.quotaid %}" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="id_employeeid">Employeeid:</label>
+        </p>
+        <p>
+            <select name="employeeid" required="" id="id_employeeid">
+                <option value="" selected="">Select</option>
+                <option value="1">Employeemodel object (1)</option>
+                <option value="2">Employeemodel object (2)</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="id_leave_type">Leave type:</label>
+        </p>
+        <p>
+            <select name="leave_type" required="" id="id_leave_type">
+                <option value="" selected="">---------</option>
+                <option value="sick leave">sick leave</option>
+                <option value="casual leave">casual leave</option>
+                <option value="PL">PL</option>
+                <option value="LWP">LWP</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="id_total_quota">Total quota:</label>
+        </p>
+        <p>
+            <input type="number" name="total_quota" required="" id="id_total_quota" value="{{range1.total_quota}}">
+        </p>
+
+        <p>
+            <label for="id_used_quota">Used quota:</label>
+        </p>
+        <p>
+            <input type="number" name="used_quota" required="" id="id_used_quota" value="{{range1.used_quota}}">
+        </p>
+
+        <p>
+            <label for="id_remain_quota">Remain quota:</label>
+        </p>
+        <p>
+            <input type="number" name="remain_quota" required="" id="id_remain_quota" value="{{range1.remain_quota}}">
+        </p>
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

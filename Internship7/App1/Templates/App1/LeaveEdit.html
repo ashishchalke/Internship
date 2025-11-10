@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Update</title>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #f8bbd0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 35px 45px;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            width: 360px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #1976d2;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0d47a1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <form action="{% url 'leaveupdate' range.leaveid %}" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="id_employeeid">Employeeid:</label>
+        </p>
+        <p>
+            <select name="employeeid" required id="id_employeeid">
+                <option value="" selected>Select</option>
+                <option value="1">Employeemodel object (1)</option>
+                <option value="2">Employeemodel object (2)</option>
+                <option value="3">Employeemodel object (3)</option>
+                <option value="4">Employeemodel object (4)</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="id_leave_type">Leave type:</label>
+        </p>
+        <p>
+            <select name="leave_type" required id="id_leave_type">
+                <option value="" selected>---------</option>
+                <option value="SL">SL</option>
+                <option value="CL">CL</option>
+                <option value="PL">PL</option>
+                <option value="LWP">LWP</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="id_reason">Reason:</label>
+        </p>
+        <p>
+            <input type="text" name="reason" value="{{ range.reason }}" maxlength="200" required id="id_reason">
+        </p>
+
+        <p>
+            <label for="id_total_days">Total days:</label>
+        </p>
+        <p>
+            <input type="number" name="total_days" required id="id_total_days" value="{{ range.total_day }}">
+        </p>
+
+        <p>
+            <label for="id_status">Status:</label>
+        </p>
+        <p>
+            <select name="status" required id="id_status">
+                <option value="" selected>---------</option>
+                <option value="approved">approved</option>
+                <option value="rejected">rejected</option>
+                <option value="pending">pending</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="id_approved_by">Approved by:</label>
+        </p>
+        <p>
+            <select name="approved_by" required id="id_approved_by">
+                <option value="" selected>---------</option>
+                <option value="1">Employeemodel object (1)</option>
+                <option value="2">Employeemodel object (2)</option>
+            </select>
+        </p>
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
